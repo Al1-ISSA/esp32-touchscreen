@@ -12,12 +12,24 @@
 // SCREEN: ui_Screen1
 void ui_Screen1_screen_init(void);
 lv_obj_t *ui_Screen1;
-lv_obj_t *ui_Panel1;
+void ui_event_mole( lv_event_t * e);
+lv_obj_t *ui_mole1;
+lv_obj_t *ui_mole2;
+lv_obj_t *ui_mole3;
+lv_obj_t *ui_mole4;
+lv_obj_t *ui_mole5;
+lv_obj_t *ui_mole6;
+// lv_obj_t *ui_hit;
 void ui_event_Button1( lv_event_t * e);
 lv_obj_t *ui_Button1;
 lv_obj_t *ui_Label1;
+lv_obj_t *ui_Panel1;
 lv_obj_t *ui_Label2;
+lv_obj_t *ui_Score;
 lv_obj_t *ui____initial_actions0;
+const lv_img_dsc_t *ui_imgset_back[1] = {&ui_img_back2_png};
+const lv_img_dsc_t *ui_imgset_1601797844[1] = {&ui_img_1881230945};
+const lv_img_dsc_t *ui_imgset_963906398[1] = {&ui_img_1253162907};
 
 ///////////////////// TEST LVGL SETTINGS ////////////////////
 #if LV_COLOR_DEPTH != 16
@@ -30,10 +42,17 @@ lv_obj_t *ui____initial_actions0;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
+void ui_event_mole( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+if ( event_code == LV_EVENT_CLICKED) {
+      hitFunction( e );
+      
+}
+}
 void ui_event_Button1( lv_event_t * e) {
     lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
 if ( event_code == LV_EVENT_CLICKED) {
-      _ui_label_set_property(ui_Label2, _UI_LABEL_PROPERTY_TEXT, "Clicked :)");
+      startGame( e );
 }
 }
 
